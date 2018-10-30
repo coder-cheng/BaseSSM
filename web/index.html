@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>师资培训管理系统</title>
+    <!-- Mobile specific metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Force IE9 to render in normal mode -->
+    <!--<meta http-equiv="X-UA-Compatible" content=”IE=edge,chrome=1″ />-->
+    <!--[if IE]>
+    <meta http-equiv="x-ua-compatible" content="IE=9"/>
+    <![endif]-->
+    <meta name="author" content="SuggeElson"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="application-name" content="sprFlat admin template"/>
+    <!-- Import google fonts - Heading first/ text second -->
+    <link rel='stylesheet' type='text/css'/>
+    <!--[if lt IE 9]>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+    <!-- Css files -->
+    <!-- Icons -->
+    <link href="assets/css/icons.css" rel="stylesheet"/>
+    <!-- jQueryUI -->
+    <link href="assets/css/sprflat-theme/jquery.ui.all.css" rel="stylesheet"/>
+    <!-- Bootstrap stylesheets (included template modifications) -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- Plugins stylesheets (all plugin custom css) -->
+    <link href="assets/css/plugins.css" rel="stylesheet"/>
+    <!-- Main stylesheets (template main css file) -->
+    <link href="assets/css/main.css" rel="stylesheet"/>
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="assets/css/custom.css" rel="stylesheet"/>
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="icon" href="assets/img/ico/favicon.ico" type="image/png">
+    <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
+    <meta name="msapplication-TileColor" content="#3399cc"/>
+</head>
+<body>
+<!-- Start #header -->
+<div id="header">
+    <div class="container-fluid">
+        <div class="navbar">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <span class="text-logo" style="margin: auto 20px;">师资培训管理系统</span>
+                </a>
+            </div>
+            <nav class="top-nav" role="navigation">
+                <ul class="nav navbar-nav pull-left">
+                    <li id="toggle-sidebar-li">
+                        <a href="#" id="toggle-sidebar"><i class="en-arrow-left2"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="full-screen"><i class="fa-fullscreen"></i></a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown"><i class="br-alarm"></i> <span class="notification">5</span></a>
+                        <ul class="dropdown-menu notification-menu right" role="menu">
+                            <li class="clearfix">
+                                <i class="ec-chat"></i>
+                                <a href="#" class="notification-link"> 待办事务 </a>
+                                <span class="notification-action"> 需要及时处理 </span>
+                                <a href="#" class="notification-user"> 2 files </a>
+                            </li>
+                            <li class="clearfix">
+                                <i class="st-paperclip"></i>
+                                <a href="#" class="notification-link"> 事务进程 </a>
+                                <span class="notification-action"> 事务有新的进展 </span>
+                                <a href="#" class="notification-user"> 3 files</a>
+                            </li>
+                            <li class="clearfix">
+                                <i class="st-support"></i>
+                                <a href="#" class="notification-link"> 其他 </a>
+                                <span class="notification-action"> 可能会有其他 </span>
+                                <a href="#" class="notification-user"> idea </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown">
+                            <img class="user-avatar" src="assets/img/avatars/48.jpg" alt="SuggeElson">管理员</a>
+                        <ul class="dropdown-menu right" role="menu">
+                            <li><a href="temputil/profile.html"><i class="st-user"></i> 个人信息 </a>
+                            </li>
+                            <li><a href="temputil/file.html"><i class="st-cloud"></i> 任务管理 </a>
+                            </li>
+                            <li><a href="login.html"><i class="im-exit"></i> 退出 </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Start #header-area -->
+        <!-- End #header-area -->
+    </div>
+    <!-- Start .header-inner -->
+</div>
+<!-- End #header -->
+<!-- Start #sidebar -->
+<div id="sidebar">
+    <!-- Start .sidebar-inner -->
+    <div class="sidebar-inner">
+        <!-- Start #sideNav -->
+        <ul id="sideNav" class="nav nav-pills nav-stacked">
+            <li class="top-search">
+                <form>
+                    <input type="text" name="search" placeholder="搜索 ...">
+                    <button type="submit"><i class="ec-search s20"></i>
+                    </button>
+                </form>
+            </li>
+            <li><a href="index.html"> 菜 单 <i class="im-screen"></i></a>
+            </li>
+            <li>
+                <a href="#"> 基础信息 <i class="im-paragraph-justify"></i></a>
+                <ul class="nav sub">
+                    <li><a id="localmess" href="mess-local.html#mess-local" target="load-iframe">
+                        <i class="br-location"></i> 区域信息 </a>
+                    </li>
+                    <li><a id="basemess" href="mess-base.html#mess-base" target="load-iframe">
+                        <i class="br-tag"></i> 基地信息 </a>
+                    </li>
+                    <li><a id="schoolmess" href="mess-school.html#mess-school" target="load-iframe">
+                        <i class="fa-leaf"></i> 学校信息 </a>
+                    </li>
+                    <li><a id="usermess" href="mess-user.html#mess-user" target="load-iframe">
+                        <i class="fa-user"></i> 用户信息 </a>
+                    </li>
+                    <li><a id="objmess" href="mess-obj.html#mess-obj" target="load-iframe">
+                        <i class="im-wand"></i> 专业信息 </a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#"> 需求分析 <i class="st-lab"></i></a>
+                <ul class="nav sub">
+                    <li><a id="needmess" href="need-search.html#need-search" target="load-iframe">
+                        <i class="br-chart"></i> 培训需求调研 </a>
+                    </li>
+                    <li><a id="needrebak" href="need-rebak.html#need-rebak" target="load-iframe">
+                        <i class="br-window"></i> 培训需求反馈 </a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#"> 培训管理 <i class="im-table2"></i></a>
+                <ul class="nav sub">
+                    <li><a id="projmess" href="proj-mess.html#proj-mess" target="load-iframe">
+                        <i class="en-text2"></i> 培训信息（已完成） </a>
+                    </li>
+                    <li><a id="projnoti" href="proj-noti.html#proj-noti" target="load-iframe">
+                        <i class="en-bell"></i> 开课通知（进行中）</a>
+                    </li>
+                    <li><a id="projdesi" href="proj-rebak.html#proj-rebak" target="load-iframe">
+                        <i class="st-graph"></i> 课程设计反馈 </a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#"> 学员管理 <i class="st-files"></i></a>
+                <ul class="nav sub">
+                    <li><a id="stumess" href="stu-mess.html#stu-mess" target="load-iframe">
+                        <i class="ec-user"></i> 学员信息管理 </a>
+                    </li>
+                    <li><a id="stugrade" href="stu-grade.html#stu-grade" target="load-iframe">
+                        <i class="st-file"></i> 学员成绩管理 </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- End #sideNav -->
+        <!-- Start .sidebar-panel -->
+        <div class="sidebar-panel">
+            <h4 class="sidebar-panel-title">
+                <i class="im-fire"></i> 欢 迎 登 陆 </h4>
+        </div>
+        <!-- End .sidebar-panel -->
+    </div>
+    <!-- End .sidebar-inner -->
+</div>
+<!-- End #sidebar -->
+<!-- Start #right-sidebar -->
+<!-- End #right-sidebar -->
+<!-- Start #content -->
+<div id="content">
+    <!-- Start .content-wrapper -->
+    <div class="content-wrapper">
+        <div class="row">
+            <!-- Start .row -->
+            <!-- Start .page-header -->
+            <div class="col-lg-12 heading">
+                <h1 class="page-header"><i class="ec-support"></i> 导 航 </h1>
+                <!-- Start .breadcrumb -->
+                <ul class="breadcrumb">
+                    <li><a href="#"><i class="im-home"></i>首页</a><i class="en-arrow-right7"></i></li>
+                    <li><a href="#">信息</a></li>
+                </ul>
+                <!-- End .breadcrumb -->
+            </div>
+            <!-- End .page-header -->
+        </div>
+        <!-- End .row -->
+    </div>
+    <!-- End .content-wrapper -->
+    <div class="clearfix"></div>
+    <!--模块页面加载-->
+    <div id="load-windows" style="width: 100%;height: 100%;">
+        <iframe id="load-iframe" name="load-iframe" src="" frameborder="0"></iframe>
+    </div>
+</div>
+<!-- End #content -->
+<!-- Javascripts -->
+<!-- Load pace first -->
+<script src="assets/plugins/core/pace/pace.min.js"></script>
+<!-- Important javascript libs(put in all pages) -->
+<script src="assets/js/jquery-1.8.3.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="assets/js/libs/jquery-2.1.1.min.js">\x3C/script>')
+</script>
+<script src="assets/js/jquery-ui.js"></script>
+<script>
+    window.jQuery || document.write('<script src="assets/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
+</script>
+<!--ajax异步加载页面-->
+<!--<script>
+    /*$(document).ready(function () {
+        $("#localmess").click(function () {
+            $("#load-windows").load("http://localhost:2222/mess-local.html .outlet")
+        })
+        $("#basemess").click(function () {
+            $("#load-windows").load("mess-base.html .outlet")
+        })
+        $("#schoolmess").click(function () {
+            $("#load-windows").load("mess-school.html .outlet")
+        })
+        $("#usermess").click(function () {
+            $("#load-windows").load("mess-role.html .outlet")
+        })
+        $("#objmess").click(function () {
+            $("#load-windows").load("mess-obj.html .outlet")
+        })
+        $("#needmess").click(function () {
+            $("#load-windows").load("need-search.html .outlet")
+        })
+        $("#needrebak").click(function () {
+            $("#load-windows").load("need-back.html .outlet")
+        })
+        $("#projmess").click(function () {
+            $("#load-windows").load("proj-mess.html .outlet")
+        })
+        $("#projnoti").click(function () {
+            $("#load-windows").load("proj-noti.html .outlet")
+        })
+        $("#projdesi").click(function () {
+            $("#load-windows").load("proj-back.html .outlet")
+        })
+        $("#stumess").click(function () {
+            $("#load-windows").load("stu-mess.html .outlet")
+        })
+        $("#stugrade").click(function () {
+            $("#load-windows").load("stu-grade.html .outlet")
+        })
+    });*/
+
+</script>-->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="assets/js/libs/excanvas.min.js"></script>
+<script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script type="text/javascript" src="assets/js/libs/respond.min.js"></script>
+<![endif]-->
+<!-- Bootstrap plugins -->
+<script src="assets/js/bootstrap/bootstrap.js"></script>
+<!-- Core plugins ( not remove ever) -->
+<!-- Handle responsive view functions -->
+<script src="assets/js/jRespond.min.js"></script>
+<!-- Custom scroll for sidebars,tables and etc. -->
+<script src="assets/plugins/core/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="assets/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+<!-- Resize text area in most pages -->
+<script src="assets/plugins/forms/autosize/jquery.autosize.js"></script>
+<!-- Proivde quick search for many widgets -->
+<script src="assets/plugins/core/quicksearch/jquery.quicksearch.js"></script>
+<!-- Bootbox confirm dialog for reset postion on panels -->
+<script src="assets/plugins/ui/bootbox/bootbox.js"></script>
+<!-- Other plugins ( load only nessesary plugins for every page) -->
+<script src="assets/plugins/charts/flot/jquery.flot.js"></script>
+<script src="assets/plugins/charts/flot/jquery.flot.pie.js"></script>
+<script src="assets/plugins/charts/flot/jquery.flot.resize.js"></script>
+<script src="assets/plugins/charts/flot/jquery.flot.time.js"></script>
+<script src="assets/plugins/charts/flot/jquery.flot.growraf.js"></script>
+<script src="assets/plugins/charts/flot/jquery.flot.categories.js"></script>
+<script src="assets/plugins/charts/flot/jquery.flot.stack.js"></script>
+<script src="assets/plugins/charts/flot/jquery.flot.tooltip.min.js"></script>
+<script src="assets/plugins/charts/flot/date.js"></script>
+<script src="assets/plugins/charts/sparklines/jquery.sparkline.js"></script>
+<script src="assets/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
+<script src="assets/plugins/forms/icheck/jquery.icheck.js"></script>
+<script src="assets/plugins/forms/tags/jquery.tagsinput.min.js"></script>
+<script src="assets/plugins/forms/tinymce/tinymce.min.js"></script>
+<script src="assets/plugins/tables/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/tables/datatables/jquery.dataTablesBS3.js"></script>
+<script src="assets/plugins/tables/datatables/tabletools/ZeroClipboard.js"></script>
+<script src="assets/plugins/tables/datatables/tabletools/TableTools.js"></script>
+<script src="assets/plugins/misc/highlight/highlight.pack.js"></script>
+<script src="assets/plugins/misc/countTo/jquery.countTo.js"></script>
+<script src="assets/plugins/ui/weather/skyicons.js"></script>
+<script src="assets/plugins/ui/notify/jquery.gritter.js"></script>
+<script src="assets/plugins/ui/calendar/fullcalendar.js"></script>
+<script src="assets/js/jquery.sprFlat.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/pages/dashboard.js"></script>
+<script src="assets/js/pages/data-tables.js"></script>
+<script src="assets/plugins/core/moment/moment.min.js"></script>
+
+
+</body>
+</html>

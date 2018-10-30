@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>师资培训管理系统</title>
+    <!-- Mobile specific metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Force IE9 to render in normal mode -->
+    <!--<meta http-equiv="X-UA-Compatible" content=”IE=edge,chrome=1″ />-->
+    <!--[if IE]>
+    <meta http-equiv="x-ua-compatible" content="IE=9"/>
+    <![endif]-->
+    <meta name="author" content="SuggeElson"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="application-name" content="sprFlat admin template"/>
+    <!-- Import google fonts - Heading first/ text second -->
+    <link rel='stylesheet' type='text/css'/>
+    <!--[if lt IE 9]>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+    <!-- Css files -->
+    <!-- Icons -->
+    <link href="../assets/css/icons.css" rel="stylesheet"/>
+    <!-- jQueryUI -->
+    <link href="../assets/css/sprflat-theme/jquery.ui.all.css" rel="stylesheet"/>
+    <!-- Bootstrap stylesheets (included template modifications) -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- Plugins stylesheets (all plugin custom css) -->
+    <link href="../assets/css/plugins.css" rel="stylesheet"/>
+    <!-- Main stylesheets (template main css file) -->
+    <link href="../assets/css/main.css" rel="stylesheet"/>
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="../assets/css/custom.css" rel="stylesheet"/>
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+          href="../assets/img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="../assets/img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="icon" href="../assets/img/ico/favicon.ico" type="image/png">
+    <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
+    <meta name="msapplication-TileColor" content="#3399cc"/>
+</head>
+<body>
+<!-- Start #header -->
+<div id="header">
+    <div class="container-fluid">
+        <div class="navbar">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <span class="text-logo" style="margin: auto 20px;">师资培训管理系统</span>
+                </a>
+            </div>
+            <nav class="top-nav" role="navigation">
+                <ul class="nav navbar-nav pull-left">
+                    <li id="toggle-sidebar-li">
+                        <a href="#" id="toggle-sidebar"><i class="en-arrow-left2"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="full-screen"><i class="fa-fullscreen"></i></a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown"><i class="br-alarm"></i> <span class="notification">5</span></a>
+                        <ul class="dropdown-menu notification-menu right" role="menu">
+                            <li class="clearfix">
+                                <i class="ec-chat"></i>
+                                <a href="#" class="notification-link"> 待办事务 </a>
+                                <span class="notification-action"> 需要及时处理 </span>
+                                <a href="#" class="notification-user"> 2 files </a>
+                            </li>
+                            <li class="clearfix">
+                                <i class="st-paperclip"></i>
+                                <a href="#" class="notification-link"> 事务进程 </a>
+                                <span class="notification-action"> 事务有新的进展 </span>
+                                <a href="#" class="notification-user"> 3 files</a>
+                            </li>
+                            <li class="clearfix">
+                                <i class="st-support"></i>
+                                <a href="#" class="notification-link"> 提示 </a>
+                                <span class="notification-action"> 请尽量使用 </span>
+                                <a href="#" class="notification-user"> 除IE外其他浏览器 </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown">
+                            <img class="user-avatar" src="../assets/img/avatars/48.jpg" alt="SuggeElson">管理员</a>
+                        <ul class="dropdown-menu right" role="menu">
+                            <li><a href="../temputil/profile.html"><i class="st-user"></i> 个人信息 </a>
+                            </li>
+                            <li><a href="loginUI.do"><i class="im-exit"></i> 退出 </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Start #header-area -->
+        <!-- End #header-area -->
+    </div>
+    <!-- Start .header-inner -->
+</div>
+<!-- End #header -->
+<!-- Start #sidebar -->
+<div id="sidebar">
+    <!-- Start .sidebar-inner -->
+    <div class="sidebar-inner">
+        <!-- Start #sideNav -->
+        <ul id="sideNav" class="nav nav-pills nav-stacked">
+            <li class="top-search">
+                <form>
+                    <input type="text" name="search" placeholder="搜索 ...">
+                    <button type="submit"><i class="ec-search s20"></i>
+                    </button>
+                </form>
+            </li>
+            <li><a href="indexUI.do"> 菜 单 <i class="im-screen"></i></a>
+            </li>
+            <li>
+                <a href="#"> 信息管理 <i class="im-paragraph-justify"></i></a>
+                <ul class="nav sub">
+                    <li><a id="localmess" href="javascript:void(0)" target="load-iframe">
+                        <i class="br-location"></i> 区域信息 </a>
+                    </li>
+                    <li><a id="basemess" href="#" target="load-iframe">
+                        <i class="br-tag"></i> 基地信息 </a>
+                    </li>
+                    <li><a id="schoolmess" href="#" target="load-iframe">
+                        <i class="fa-leaf"></i> 学校信息 </a>
+                    </li>
+                    <li><a id="objmess" href="#" target="load-iframe">
+                        <i class="im-wand"></i> 专业信息 </a>
+                    </li>
+                    <li><a id="stumess" href="#" target="load-iframe">
+                        <i class="st-file"></i> 学员信息 </a>
+                    </li>
+                    <li><a id="rolemess" href="#" target="load-iframe">
+                        <i class="fa-user"></i> 角色管理 </a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#"> 项目管理 <i class="im-table2"></i></a>
+                <ul class="nav sub">
+                    <li><a id="projectmess" href="#" target="load-iframe">
+                        <i class="en-text2"></i> 项目信息 </a>
+                    </li>
+                    <li><a id="needsearch" href="#" target="load-iframe">
+                        <i class="br-chart"></i> 需求调研 </a>
+                    </li>
+                    <li><a id="needback" href="#" target="load-iframe">
+                        <i class="br-window"></i> 需求反馈 </a>
+                    </li>
+                    <li><a id="projectnotice" href="#" target="load-iframe">
+                        <i class="en-bell"></i> 开课通知 </a>
+                    </li>
+                    <li><a id="projectdesign" href="#" target="load-iframe">
+                        <i class="st-graph"></i> 课程设计反馈 </a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#"> 学员管理 <i class="st-files"></i></a>
+                <ul class="nav sub">
+                    <li><a id="sturegister" href="#">
+                        <i class="fa-user"></i> 学员注册 </a>
+                    </li>
+                    <li><a id="stuapply" href="#" target="load-iframe">
+                        <i class="fa-user"></i> 在线报名 </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- End #sideNav -->
+        <!-- Start .sidebar-panel -->
+        <div class="sidebar-panel">
+            <h4 class="sidebar-panel-title">
+                <i class="im-fire"></i> 欢 迎 登 陆 </h4>
+        </div>
+        <!-- End .sidebar-panel -->
+    </div>
+    <!-- End .sidebar-inner -->
+</div>
+<!-- End #sidebar -->
+<!-- Start #content -->
+<div id="content">
+    <!-- Start .content-wrapper -->
+    <div class="content-wrapper">
+        <div class="row">
+            <!-- Start .row -->
+            <!-- Start .page-header -->
+            <div class="col-lg-12 heading">
+                <h1 class="page-header"><i class="ec-support"></i> 导 航 </h1>
+                <!-- Start .breadcrumb -->
+                <ul class="breadcrumb">
+                    <li><a href="#"><i class="im-home"></i>首页</a><i class="en-arrow-right7"></i></li>
+                    <li><a href="#">信息</a></li>
+                </ul>
+                <!-- End .breadcrumb -->
+            </div>
+            <!-- End .page-header -->
+        </div>
+        <!-- End .row -->
+    </div>
+    <!-- End .content-wrapper -->
+    <div class="clearfix"></div>
+    <!--模块页面加载-->
+    <div id="load-windows" style="width: 100%;height: 100%;">
+        <iframe id="load-iframe" name="load-iframe" src="" frameborder="0"></iframe>
+    </div>
+</div>
+<!-- End #content -->
+<!-- Javascripts -->
+<!-- Load pace first -->
+<script>
+    window.jQuery || document.write('<script src="../assets/js/libs/jquery-2.1.1.min.js">\x3C/script>')
+</script>
+<script src="../assets/js/jquery-ui.js"></script>
+<script>
+    window.jQuery || document.write('<script src="../assets/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
+</script>
+<!--ajax异步加载页面-->
+<script type="text/javascript">
+    $(function () {
+        $("#localmess").click(function () {
+            $("#load-windows").load("sys/localMess.do", function () {
+                $("#load-windows").removeData();
+            });
+        });
+        $("#basemess").click(function () {
+            $("#load-windows").load("sys/baseMess.do", function () {
+                $("#load-windows").removeData();
+            })
+        })
+        $("#schoolmess").click(function () {
+            $("#load-windows").load("sys/schoolMess.do", function () {
+                $("#load-windows").removeData();
+            })
+        })
+        $("#objmess").click(function () {
+            $("#load-windows").load("sys/objMess.do", function () {
+                $("#load-windows").removeData();
+            })
+        })
+        $("#stumess").click(function () {
+            $("#load-windows").load("sys/stuMess.do", function () {
+                $("#load-windows").removeData();
+            })
+        })
+        $("#rolemess").click(function () {
+            $("#load-windows").load("sys/roleMess.do", function () {
+                $("#load-windows").removeData();
+            })
+        })
+        $("#projectmess").click(function () {
+            $("#load-windows").load("pro/projectMess.do", function () {
+                $("#load-windows").removeData();
+            })
+        })
+        $("#needsearch").click(function () {
+            $("#load-windows").load("pro/needSearch.do", function () {
+                $("#load-windows").removeData();
+            })
+        })
+        $("#needback").click(function () {
+            $("#load-windows").load("pro/needBack.do", function () {
+                $("#load-windows").removeData();
+            })
+        })
+        $("#projectnotice").click(function () {
+            $("#load-windows").load("pro/projectNotice.do", function () {
+                $("#load-windows").removeData();
+            })
+        })
+        $("#projectdesign").click(function () {
+            $("#load-windows").load("pro/projectDesign.do", function () {
+                $("#load-windows").removeData();
+            })
+        })
+        $("#sturegister").click(function () {
+            $("#load-windows").load("stu/stuRegister.do", function () {
+                $("#load-windows").removeData();
+            })
+        })
+        $("#stuapply").click(function () {
+            $("#load-windows").load("stu/stuApply.do", function () {
+                $("#load-windows").removeData();
+            })
+        })
+    });
+</script>
+<!--load出来的页面js-->
+<script type="text/javascript">
+    $(document).on("click", "button", function () {
+        alert("确认执行此操作？");
+        $(".btn-add").click(function () {
+                $("#load-windows").load("sys/localEdit.do");
+        })
+        $(".btn-change").click(function () {
+            $("#load-windows").load("sys/localEdit.do");
+        })
+    })
+</script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../assets/js/libs/excanvas.min.js"></script>
+<script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script type="text/javascript" src="../assets/js/libs/respond.min.js"></script>
+<![endif]-->
+<!-- Important javascript libs(put in all pages) -->
+<script src="../assets/js/jquery-1.8.3.min.js"></script>
+<script src="../assets/js/jquery.sprFlat.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/pages/blank.js"></script>
+<script src="../assets/js/pages/dashboard.js"></script>
+<script src="../assets/js/pages/data-tables.js"></script>
+<!-- Bootstrap plugins -->
+<script src="../assets/js/bootstrap/bootstrap.js"></script>
+<!-- Core plugins ( not remove ever) -->
+<!-- Handle responsive view functions -->
+<script src="../assets/js/jRespond.min.js"></script>
+<!-- Custom scroll for sidebars,tables and etc. -->
+<script src="../assets/plugins/core/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../assets/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+<!-- Resize text area in most pages -->
+<script src="../assets/plugins/forms/autosize/jquery.autosize.js"></script>
+<!-- Proivde quick search for many widgets -->
+<script src="../assets/plugins/core/quicksearch/jquery.quicksearch.js"></script>
+<!-- Bootbox confirm dialog for reset postion on panels -->
+<script src="../assets/plugins/ui/bootbox/bootbox.js"></script>
+<!-- Other plugins ( load only nessesary plugins for every page) -->
+<script src="../assets/plugins/charts/flot/jquery.flot.js"></script>
+<script src="../assets/plugins/charts/flot/jquery.flot.pie.js"></script>
+<script src="../assets/plugins/charts/flot/jquery.flot.resize.js"></script>
+<script src="../assets/plugins/charts/flot/jquery.flot.time.js"></script>
+<script src="../assets/plugins/charts/flot/jquery.flot.growraf.js"></script>
+<script src="../assets/plugins/charts/flot/jquery.flot.categories.js"></script>
+<script src="../assets/plugins/charts/flot/jquery.flot.stack.js"></script>
+<script src="../assets/plugins/charts/flot/jquery.flot.tooltip.min.js"></script>
+<script src="../assets/plugins/charts/flot/date.js"></script>
+<script src="../assets/plugins/charts/sparklines/jquery.sparkline.js"></script>
+<script src="../assets/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
+<script src="../assets/plugins/forms/icheck/jquery.icheck.js"></script>
+<script src="../assets/plugins/forms/tags/jquery.tagsinput.min.js"></script>
+<script src="../assets/plugins/forms/tinymce/tinymce.min.js"></script>
+<script src="../assets/plugins/misc/highlight/highlight.pack.js"></script>
+<script src="../assets/plugins/misc/countTo/jquery.countTo.js"></script>
+<script src="../assets/plugins/tables/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/plugins/tables/datatables/jquery.dataTablesBS3.js"></script>
+<script src="../assets/plugins/tables/datatables/tabletools/ZeroClipboard.js"></script>
+<script src="../assets/plugins/tables/datatables/tabletools/TableTools.js"></script>
+<script src="../assets/plugins/ui/weather/skyicons.js"></script>
+<script src="../assets/plugins/ui/notify/jquery.gritter.js"></script>
+<script src="../assets/plugins/ui/calendar/fullcalendar.js"></script>
+<script src="../assets/plugins/core/moment/moment.min.js"></script>
+<script src="../assets/plugins/core/pace/pace.min.js"></script>
+</body>
+</html>
