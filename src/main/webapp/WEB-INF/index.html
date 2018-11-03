@@ -221,7 +221,10 @@
 <script>
     window.jQuery || document.write('<script src="../assets/js/libs/jquery-2.1.1.min.js">\x3C/script>')
 </script>
-<script src="../assets/js/jquery-ui.js"></script>
+<script>
+    window.jQuery || document.write('<script src="/assets/js/jquery-1.8.3.min.js">\x3C/script>')
+</script>
+<script src="/assets/js/jquery-ui.js"></script>
 <script>
     window.jQuery || document.write('<script src="../assets/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
 </script>
@@ -229,8 +232,8 @@
 <script type="text/javascript">
     $(function () {
         $("#localmess").click(function () {
-            $("#load-windows").load("sys/localMess.do", function () {
-                $("#load-windows").removeData();
+            $("#content").load("sys/localMess.do", function () {
+                $("#content").removeData();
             });
         });
         $("#basemess").click(function () {
@@ -296,7 +299,7 @@
     });
 </script>
 <!--load出来的页面js-->
-<script type="text/javascript">
+<!--<script type="text/javascript">
     $(document).on("click", "button", function () {
         alert("确认执行此操作？");
         $(".btn-add").click(function () {
@@ -306,14 +309,15 @@
             $("#load-windows").load("sys/localEdit.do");
         })
     })
-</script>
+</script>-->
 <!--[if lt IE 9]>
 <script type="text/javascript" src="../assets/js/libs/excanvas.min.js"></script>
 <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <script type="text/javascript" src="../assets/js/libs/respond.min.js"></script>
 <![endif]-->
 <!-- Important javascript libs(put in all pages) -->
-<script src="../assets/js/jquery-1.8.3.min.js"></script>
+<script src="/assets/js/libs/jquery-2.1.1.min.js"></script>
+<script src="/assets/js/jquery-1.8.3.min.js"></script>
 <script src="../assets/js/jquery.sprFlat.js"></script>
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/pages/blank.js"></script>

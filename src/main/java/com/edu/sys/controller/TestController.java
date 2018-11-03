@@ -6,10 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sun.misc.Request;
-
-import javax.xml.ws.Response;
-import java.util.List;
 
 /**
  * @Auther: Mr.ch
@@ -20,15 +16,28 @@ import java.util.List;
 @RequestMapping("/tt/")
 public class TestController {
 
+    private final LocalService localService;
+
     @Autowired
-    private LocalService localService;
+    public TestController(LocalService localService) {
+        this.localService = localService;
+    }
 
     @RequestMapping("doTest")
     @ResponseBody
-    public List<Local> doTest(
+    public Local doTest(
             Integer id){
-        List list = localService.selectLocal(id);
+        Local list = localService.selectLocal(id);
+        System.out.println(list);
         return list;
+    }
+    @RequestMapping("doTestJs")
+    public String doTestJs(){
+        return "pages/test1";
+    }
+    @RequestMapping("doHave")
+    public String doHave(){
+        return "pages/test2";
     }
 
 }

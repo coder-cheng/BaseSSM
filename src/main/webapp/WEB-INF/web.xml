@@ -8,7 +8,7 @@
     <description>eduai-V1.01</description>
 
     <welcome-file-list>
-        <welcome-file>test.jsp</welcome-file>
+        <welcome-file>/WEB-INF/login.html</welcome-file>
     </welcome-file-list>
 
     <!-- 编码过滤器 -->

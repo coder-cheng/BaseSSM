@@ -12,7 +12,14 @@ import java.util.List;
  */
 public interface LocalDao {
 
-    List<Local> selectLocal(
-            @Param("localid")Integer id);
+    int deleteLocalById(@Param("localid")Integer localid);
+
+    int updateLocalById(Local local);
+
+    int insertLocal(Local local);
+
+    Local selectLocal(
+            @Param("localid")Integer localid);
+    List<Local> getAll();
 
 }

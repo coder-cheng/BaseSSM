@@ -1,4 +1,4 @@
-<div id="mess-local" class="outlet">
+<div id="mess-local" class="outlet" xmlns:c="http://java.sun.com/jsf/core">
     <!-- Start .outlet -->
     <!-- Page start here ( usual with .row ) -->
     <div class="row">
@@ -22,6 +22,18 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <c:forEach var="list" items="${addLists}">
+                            <tr>
+                                <td>${list.localid}</td>
+                                <td>${list.localname}</td>
+                                <td>${list.locallevel}</td>
+                                <td>${list.localbelong}</td>
+                                <td>
+                                    <button class="btn btn-change" type="button">修改</button>
+                                    <button class="btn btn-del" type="button">删除</button>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         <tr class="odd gradeX">
                             <td>1000</td>
                             <td>河北</td>
@@ -93,3 +105,14 @@
     <!-- Page End here -->
 </div>
 <!-- End .outlet -->
+<script type="text/javascript">
+    $(document).on("click", "button", function () {
+        alert("确认执行此操作？");
+        $(".btn-add").click(function () {
+            $("#load-windows").load("sys/localEdit.do");
+        })
+        $(".btn-change").click(function () {
+            $("#load-windows").load("sys/localEdit.do");
+        })
+    })
+</script>

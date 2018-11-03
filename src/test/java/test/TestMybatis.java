@@ -1,12 +1,14 @@
 package test;
 
-import com.edu.sys.dao.UserDao;
-import com.edu.sys.entity.User;
+import com.edu.sys.dao.LocalDao;
+import com.edu.sys.entity.Local;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 /**
  * @Auther: Mr.ch
@@ -18,16 +20,49 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestMybatis {
 
     @Autowired
-    private UserDao userDao;
+    private LocalDao localDao;
     @Test
-    public void testSelectUser(){
-        long id = 1;
-        User user = userDao.selectUser(id);
-        System.out.println("姓名|"+user.getUsername()
-                +"|邮箱|"+ user.getEmail()
-                +"|权限|"+user.getRole()
-                +"|注册地址|"+user.getRegIp()
-                +"|注册时间|"+user.getRegTime());
+    public void getone(){
+        int id = 10000;
+        Local locallist = localDao.selectLocal(id);
+        System.out.println(locallist);
     }
+    @Test
+    public void selectAll(){
+        List<Local> list = localDao.getAll();
+        System.out.println(list);
+    }
+    @Test
+    public void insertLocal(){
+        Local local = new Local();
+        local.setLocalid(11);
+        local.setLocalname("test");
+        local.setLocallevel("top");
+        local.setLocalbelong("own");
+        int rows = localDao.insertLocal(local);
+        System.out.println(rows);
+    }
+    @Test
+    public void updateLocal(){
+        Local local = new Local();
+        local.setLocalid(11);
+        local.setLocalname("大哥");
+        local.setLocallevel("日他哥");
+        local.setLocalbelong("强无敌");
+        int rows = localDao.updateLocalById(local);
+        System.out.println(rows);
+    }
+    @Test
+    public void deleteLocal(){
+        int id=11;
+        int rows = localDao.deleteLocalById(id);
+        if (rows==1){
+            System.out.println("删除成功！");
+        }else {
+            System.out.println("数据已经不存在。");
+        }
+    }
+    
+
 
 }

@@ -14,6 +14,7 @@
 <h1>${response}</h1>
 <input id="input1">
 <input type="button" value="点死我！" onclick="test()"/>
+<h2>${list}</h2>
 <div>
     <table>
         <tbody id="tbodyID"></tbody>
@@ -24,11 +25,10 @@
 <script>
     function test() {
         var data = $("#input1").val();
-        alert("aaaw");
-        $.post("test.jsp", data, function (list) {
+        alert("data:"+data);
+        $.post("/tt/doTest.do",data,function (list) {
             alert("data:"+data);
             alert("list:"+list);
-            alert("list:"+result);
             var tbody = $("#tbodyID")
             tbody.empty();
             var tr = $("<tr></tr>");

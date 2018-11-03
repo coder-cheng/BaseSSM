@@ -5,8 +5,40 @@
 <!-- 设置为UserDao接口方法提供sql语句配置 -->
 <mapper namespace="com.edu.sys.dao.LocalDao">
 
-    <select id="selectLocal" resultType="Local" parameterType="int">
-        SELECT * FROM user WHERE localid = #{localid}
+    <delete id="deleteLocalById" parameterType="int">
+        delete from local where localid=#{localid}
+    </delete>
+
+    <update id="updateLocalById" parameterType="local">
+        update local
+        <set>
+            <if test="localid!=null and localid!=''">
+                localid=#{localid},
+            </if>
+            <if test="localname!=null and localname!=''">
+                localname=#{localname},
+            </if>
+            <if test="locallevel!=null and locallevel!=''">
+                locallevel=#{locallevel},
+            </if>
+            <if test="localbelong!=null and localbelong!=''">
+                localbelong=#{localbelong},
+            </if>
+        </set>
+        where localid=#{localid}
+    </update>
+
+    <insert id="insertLocal" parameterType="Local">
+        INSERT INTO local(localid,localname,locallevel,localbelong)
+        VALUES(#{localid},#{localname},#{locallevel},#{localbelong})
+    </insert>
+
+    <select id="selectLocal" resultType="Local" parameterType="Integer">
+        SELECT * FROM local WHERE localid = #{localid}
+    </select>
+
+    <select id="getAll" resultType="Local">
+        SELECT * FROM local
     </select>
 
 </mapper>

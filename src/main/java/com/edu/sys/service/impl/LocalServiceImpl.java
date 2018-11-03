@@ -20,7 +20,30 @@ public class LocalServiceImpl implements LocalService {
     private LocalDao localDao;
 
     @Override
-    public List<Local> selectLocal(Integer id) {
-        return localDao.selectLocal(id);
+    public int deleteLocalById(Integer localid) {
+        int rows = localDao.deleteLocalById(localid);
+        return rows;
+    }
+
+    @Override
+    public int updateLocalById(Integer localid, Local local) {
+        int rows = localDao.updateLocalById(local);
+        return rows;
+    }
+
+    @Override
+    public int insertLocal(Local local) {
+        return 0;
+    }
+
+    @Override
+    public Local selectLocal(Integer localid) {
+        return localDao.selectLocal(localid);
+    }
+
+    @Override
+    public List<Local> getAll() {
+        List<Local> list = localDao.getAll();
+        return list;
     }
 }
