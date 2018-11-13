@@ -19,7 +19,7 @@
     <!-- 静态资源默认servlet配置 -->
     <mvc:default-servlet-handler/>
     <!-- 静态资源映射 -->
-    <mvc:resources mapping="/" location="/WEB-INF/"/>
+    <mvc:resources mapping="/mapper/" location="/WEB-INF/"/>
 
     <!-- 配置html显示ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

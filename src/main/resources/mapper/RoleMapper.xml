@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为BaseDao接口方法提供sql语句配置 -->
+<mapper namespace="com.edu.sys.dao.RoleDao">
+
+    <delete id="deleteRoleByName" parameterType="Role">
+        delete from role where username=#{username}
+    </delete>
+
+    <update id="updateRoleByName" parameterType="Role">
+        update role
+        <set>
+            <if test="username!=null and username!=''">
+                username=#{username},
+            </if>
+            <if test="password!=null and password!=''">
+                password=#{password},
+            </if>
+            <if test="role!=null and role!=''">
+                role=#{role},
+            </if>
+            <if test="rolelevel!=null and rolelevel!=''">
+                rolelevel=#{rolelevel},
+            </if>
+        </set>
+        where username=#{username}
+    </update>
+
+    <insert id="insertRole" parameterType="Role">
+        INSERT INTO role(username,password,role,rolelevel)
+        VALUES(#{username},#{password},#{role},#{rolelevel})
+    </insert>
+
+    <select id="selectRoleByName" resultType="Role" parameterType="Role">
+        SELECT * FROM role WHERE username = #{username}
+    </select>
+
+    <select id="getAllRole" resultType="map">
+        SELECT * FROM role
+    </select>
+
+</mapper>

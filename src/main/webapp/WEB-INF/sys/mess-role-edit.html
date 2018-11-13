@@ -10,27 +10,23 @@
             <div class="panel-body">
                 <form class="form-vertical hover-stripped" role="form">
                     <div class="form-group">
-                        <label class="control-label">角色账号</label>
-                        <input type="text" class="form-control" value="这是一个项目的编号">
+                        <label class="control-label">用户名</label>
+                        <input id="username" type="text" class="form-control" value="请输入用户名">
                     </div>
                     <div class="form-group">
-                        <label class="control-label">角色名称</label>
-                        <input type="text" class="form-control" value="这是一个项目的名称">
+                        <label class="control-label">密码</label>
+                        <input id="password" type="text" class="form-control" value="请设置密码">
                     </div>
                     <div class="form-group">
-                        <label class="control-label">角色级别</label>
-                        <input type="text" class="form-control" value="这是项目发生的地点,如:河北师范大学">
+                        <label class="control-label">角色</label>
+                        <input id="role" type="text" class="form-control" value="设置用户角色">
                     </div>
                     <div class="form-group">
-                        <label class="control-label">联系方式</label>
-                        <input type="text" class="form-control" value="这是项目的时间,如2018.2~2018.8">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">其他</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <label class="control-label">角色等级</label>
+                        <input id="rolelevel" type="text" class="form-control" value="用户角色的等级">
                     </div>
                     <!-- End .form-group  -->
-                    <div class="form-group mb15">
+                    <div id="footer-button" class="form-group mb15">
                         <button class="btn btn-primary">确认</button>
                         <button class="btn btn-warning">取消</button>
                     </div>
@@ -42,4 +38,75 @@
     <!-- Page End here -->
 </div>
 <!-- End .outlet -->
-<div class="clearfix"></div>
+<script src="/assets/js/jquery-1.11.3.js"></script>
+<script>
+    /*注册方法和事件*/
+    $(function () {
+        /*加载数据的方法*/
+        doLoadData();
+        /*取消和确定按钮的点击事件*/
+        $("#footer-button")
+            .on("click", ".btn-warning", doCancel)
+            .on("click", ".btn-primary", doSave)
+    })
+    /*加载数据的方法*/
+    function doLoadData() {
+        //从数据储存模块中获取存入data数据
+        var data = $("#load-windows").data("data");
+        //如果有数据，执行初始化表单方法
+        if (data) {
+            doInitForm(data);
+        }
+    }
+    /*初始化表单的方法*/
+    function doInitForm(data) {
+        $("#username").val(data.username);
+        $("#username").attr("disabled","true");
+        $("#password").val(data.password);
+        $("#role").val(data.role);
+        $("#rolelevel").val(data.rolelevel);
+    }
+    /*确认按钮的执行方法*/
+    function doSave() {
+        var params = getFormData();
+        var data = $("#load-windows").data("data");
+        var changeUrl = "sys/updateRole.do";
+        var insertUrl = "sys/insertRole.do";
+        var url;
+        if (data) {
+            url = changeUrl
+        } else {
+            url = insertUrl
+        }
+        $.ajax({
+            type: "post",
+            url: url,
+            data: params,
+            dataType: "json",
+            success: function (result) {
+                alert("没进来？");
+                if (result.state == 1) {
+                    alert(result.message);
+                    doCancel();
+                } else {
+                    alert(result.message);
+                }
+            }
+        })
+    }
+    /*取消按钮的执行方法*/
+    function doCancel() {
+        $("#load-windows").load("sys/RoleMess.do");
+        alert("取消");
+    }
+    /*初始化表单的方法*/
+    function getFormData() {
+        var params = {
+            username: $("#username").val(),
+            password: $("#password").val(),
+            role: $("#role").val(),
+            rolelevel: $("#rolelevel").val()
+        };
+        return params;
+    }
+</script>

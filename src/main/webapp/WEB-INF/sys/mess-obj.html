@@ -21,47 +21,7 @@
                             <th>其他操作</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr class="even gradeC">
-                            <td>50001</td>
-                            <td>电子信息</td>
-                            <td>一级</td>
-                            <td>互联网电子</td>
-                            <td>
-                                <button class="btn btn-change" type="button">修改</button>
-                                <button class="btn btn-del" type="button">删除</button>
-                            </td>
-                        </tr>
-                        <tr class="even gradeC">
-                            <td>50002</td>
-                            <td>软件开发</td>
-                            <td>一级</td>
-                            <td>互联网电子</td>
-                            <td>
-                                <button class="btn btn-change" type="button">修改</button>
-                                <button class="btn btn-del" type="button">删除</button>
-                            </td>
-                        </tr>
-                        <tr class="even gradeC">
-                            <td>50019</td>
-                            <td>汽车维修</td>
-                            <td>三级</td>
-                            <td>专业技术</td>
-                            <td>
-                                <button class="btn btn-change" type="button">修改</button>
-                                <button class="btn btn-del" type="button">删除</button>
-                            </td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>50097</td>
-                            <td>美容美发</td>
-                            <td>三级</td>
-                            <td>专业技术</td>
-                            <td>
-                                <button class="btn btn-change" type="button">修改</button>
-                                <button class="btn btn-del" type="button">删除</button>
-                            </td>
-                        </tr>
+                        <tbody id="tBodyId">
                         </tbody>
                     </table>
                 </div>
@@ -72,3 +32,133 @@
     </div>
     <!-- Page End here -->
 </div>
+<script src="/assets/js/jquery-1.11.3.js"></script>
+<script>
+    /*注册点击事件和方法*/
+    $(function () {
+        //获取页面信息数据
+        doGetMess();
+        $(".row")
+        //注册添加按钮点击事件，点击执行doAddOrChange方法
+            .on("click", ".btn-add", doAddOrChange)
+            //注册修改按钮点击事件，点击执行doAddOrChange方法
+            .on("click", ".btn-change", doAddOrChange)
+            //注册删除按钮点击事件，点击执行doDelete方法
+            .on("click", ".btn-del", doDelete)
+    });
+    /*这个方法用来添加或者修改*/
+    function doAddOrChange() {
+        //声明title变量,作用于导航栏标签的更改
+        var title;
+        //判断点击按钮属于添加还是修改
+        if ($(this).hasClass("btn-add")) {
+            //如果是添加按钮，定义title值并执行加载编辑页面的方法
+            title = "添加信息";
+            //执行加载编辑页面的方法，携带title信息
+            doLoadEditUI(title);
+        } else {
+            //如果是修改按钮，定义title值为“修改信息”
+            title = "修改信息";
+            //获取之前tr上添加的idd标识
+            var id = $(this).parents("tr").data("idd");
+            //声明传入参数为当前行id。
+            var params = {objectid:id};
+            //声明请求url
+            var url = "sys/selectObjectById.do";
+            //请求url，根据params参数中的id查询数据
+            $.getJSON(url,params,function (result) {
+                //判断返回对象的状态
+                if (result.state==1){
+                    //返回对象状态正常，向加载模块添加储存信息键值对
+                    $("#load-windows").data("data",result.data);
+                    //执行加载编辑页面的方法，携带title信息
+                    doLoadEditUI(title);
+                } else{
+                    //状态不正常，弹出返回对象的信息
+                    alert(result.message);
+                }
+            })
+        }
+    }
+    /*这是加载编辑页面的方法*/
+    function doLoadEditUI(title) {
+        //改修导航栏的title信息为【添加信息】or【修改信息】
+        $("#navigation-change").html(title);
+        //声明data为加载模块中存入的data信息
+        var data = $("#load-windows").data("data");
+        //load方法携带data参数请求编辑页面的url
+        $("#load-windows").load("sys/objectEdit.do",data,function() {
+            //在回调方法中将data添加到存放数据所用的div模块中
+            $("#load-windows").data("data",data);
+        })
+    }
+    /*这是删除区域数据的方法（根据localid查询并删除）*/
+    function doDelete() {
+        //获取点击删除按钮所在行的localid
+        var id = $(this).parents("tr").data("idd");
+        alert("确定删除id为：" + id + "的数据吗？");
+        //构建参数对象
+        var params = {objectid: id};
+        //获取删除请求url
+        var url = "sys/deleteObject.do";
+        //post方法访问url并提交数据
+        $.post(url, params, function (result) {
+            //进行判断
+            if (result.state == 1) {
+                //状态正常，提示信息
+                alert(result.message);
+                //重新获得数据
+                doGetMess();
+            } else {
+                alert(result.message);
+            }
+        })
+    }
+    /*这个方法用来获取数据库所有区域信息*/
+    function doGetMess() {
+        //发送异步请求，从数据库查询所有区域信息
+        var url = "sys/getAllObject.do";
+        //post提交请求url返回数据库数据
+        $.post(url, function (result) {
+            alert("获取数据库data");
+            //对回调函数进行判定，返回jsonresult对象的状态如果==1，收到数据
+            if (result.state == 1) {
+                //设置table表格的方法，传入jsonresult对象的data对象
+                setTableBodyRows(result.data);
+            } else {
+                //如果jsonresult对象状态错误，弹出提示信息
+                alert(result.message);
+            }
+        }, "json");
+    }
+    /*这个方法用来设置table内的数据*/
+    function setTableBodyRows(data) {
+        //获取id为tBodyId的tBody对象
+        var tBody = $("#tBodyId");
+        //将tBody对象清空
+        tBody.empty();
+        //迭代data，将data添加到Body中
+        for (var i in data) {
+            var tr = $("<tr></tr>");
+            //给每一行tr设置一个idd标识，方便后期获取
+            tr.data("idd", data[i].objectid);
+            //声明tds为createTds方法，用来创建td单元格
+            var tds = createTds(data[i]);
+            //将tds添加到tr中
+            tr.append(tds);
+            //将tr添加到tBody中
+            tBody.append(tr);
+        }
+    }
+    /*这个方法用来创建每行tr内的td*/
+    function createTds(data) {
+        //声明tds内容并返回
+        var tds = "<td>" + data.objectid + "</td>" +
+            "<td>" + data.objectname + "</td>" +
+            "<td>" + data.objectlevel + "</td>" +
+            "<td>" + data.objectbelong + "</td>" +
+            "<td><button type='button' class='btn btn-change'>修改</button>" +
+            "<button type='button' class='btn btn-del'>删除</button></td>";
+        return tds;
+    }
+</script>

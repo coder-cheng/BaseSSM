@@ -11,30 +11,22 @@
                 <form class="form-vertical hover-stripped" role="form">
                     <div class="form-group">
                         <label class="control-label">区域编号</label>
-                        <input type="text" class="form-control" value="这是一个项目的编号">
+                        <input id="localId" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label class="control-label">区域名称</label>
-                        <input type="text" class="form-control" value="这是一个项目的名称">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">培训地点</label>
-                        <input type="text" class="form-control" value="这是项目发生的地点,如:河北师范大学">
+                        <input id="localName" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label class="control-label">区域级别</label>
-                        <input type="text" class="form-control" value="这是项目的时间,如2018.2~2018.8">
+                        <input id="localLevel" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label class="control-label">区域所属</label>
-                        <input type="text" class="form-control" value="这是项目的时间,如2018.2~2018.8">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">其他</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <input id="localBelong" type="text" class="form-control">
                     </div>
                     <!-- End .form-group  -->
-                    <div class="form-group mb15">
+                    <div class="form-group mb15" id="footer-button">
                         <button class="btn btn-primary">确认</button>
                         <button class="btn btn-warning">取消</button>
                     </div>
@@ -45,4 +37,80 @@
     </div>
     <!-- Page End here -->
 </div>
-<div class="clearfix"></div>
+<script src="/assets/js/jquery-1.11.3.js"></script>
+<script>
+    /*注册方法和事件*/
+    $(function () {
+        /*加载数据的方法*/
+        doLoadData();
+        /*取消和确定按钮的点击事件*/
+        $("#footer-button")
+            .on("click", ".btn-warning", doCancel)
+            .on("click", ".btn-primary", doSave)
+    })
+
+    /*加载数据的方法*/
+    function doLoadData() {
+        //从数据储存模块中获取存入data数据
+        var data = $("#load-windows").data("data");
+        //如果有数据，执行初始化表单方法
+        if (data) {
+            doInitForm(data);
+        }
+    }
+
+    /*初始化表单的方法*/
+    function doInitForm(data) {
+        $("#localId").val(data.localid);
+        $("#localId").attr("disabled","true");
+        $("#localName").val(data.localname);
+        $("#localLevel").val(data.locallevel);
+        $("#localBelong").val(data.localbelong);
+    }
+
+    /*确认按钮的执行方法*/
+    function doSave() {
+        var params = getFormData();
+        var data = $("#load-windows").data("data");
+        var changeUrl = "sys/updateLocal.do";
+        var insertUrl = "sys/insertLocal.do";
+        var url;
+        if (data) {
+            url = changeUrl
+        } else {
+            url = insertUrl
+        }
+        $.ajax({
+            type: "post",
+            url: url,
+            data: params,
+            dataType: "json",
+            success: function (result) {
+                alert("没进来？");
+                if (result.state == 1) {
+                    alert(result.message);
+                    doCancel();
+                } else {
+                    alert(result.message);
+                }
+            }
+        })
+    }
+
+    /*取消按钮的执行方法*/
+    function doCancel() {
+        $("#load-windows").load("sys/localMess.do");
+        alert("reback mess");
+    }
+
+    /*初始化表单的方法*/
+    function getFormData() {
+        var params = {
+            localid: $("#localId").val(),
+            localname: $("#localName").val(),
+            locallevel: $("#localLevel").val(),
+            localbelong: $("#localBelong").val()
+        };
+        return params;
+    }
+</script>

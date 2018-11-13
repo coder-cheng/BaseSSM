@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: Mr.ch
  * @Date: 2018-10-29 16:00
- * @Description:
+ * @Description: 这个类是服务层接口的实现类
  */
 @Service
 public class LocalServiceImpl implements LocalService {
@@ -26,24 +27,23 @@ public class LocalServiceImpl implements LocalService {
     }
 
     @Override
-    public int updateLocalById(Integer localid, Local local) {
+    public int updateLocalById(Local local) {
         int rows = localDao.updateLocalById(local);
         return rows;
     }
 
     @Override
     public int insertLocal(Local local) {
-        return 0;
+        return localDao.insertLocal(local);
     }
 
     @Override
-    public Local selectLocal(Integer localid) {
-        return localDao.selectLocal(localid);
+    public Local selectLocalById(Integer localid) {
+        return localDao.selectLocalById(localid);
     }
 
     @Override
-    public List<Local> getAll() {
-        List<Local> list = localDao.getAll();
-        return list;
+    public List<Map<String, Object>> getAllLocal() {
+        return localDao.getAllLocal();
     }
 }

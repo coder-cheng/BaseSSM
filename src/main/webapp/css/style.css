@@ -226,13 +226,13 @@ body {
   cursor: pointer;
   overflow: hidden;
   font-size: 17px;
-  background: #D85C89;
+  background: #51d8c0;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  background-image: -moz-linear-gradient(bottom, #d85c89, #e7779f);
-  background-image: -webkit-linear-gradient(bottom, #d85c89, #e7779f);
-  background-image: linear-gradient(to top, #d85c89, #e7779f);
+  background-image: -moz-linear-gradient(bottom, #41d4ae, #7fe7c2);
+  background-image: -webkit-linear-gradient(bottom, #41d4ae, #7fe7c2);
+  background-image: linear-gradient(to top, #41d4ae, #7fe7c2);
   -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 0 4px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 0 4px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 0 4px rgba(0, 0, 0, 0.5);

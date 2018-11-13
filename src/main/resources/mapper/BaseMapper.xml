@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为BaseDao接口方法提供sql语句配置 -->
+<mapper namespace="com.edu.sys.dao.BaseDao">
+
+    <delete id="deleteBaseById" parameterType="int">
+        delete from base where baseid=#{baseid}
+    </delete>
+
+    <update id="updateBaseById" parameterType="Base">
+        update base
+        <set>
+            <if test="baseid!=null and baseid!=''">
+                baseid=#{baseid},
+            </if>
+            <if test="basename!=null and basename!=''">
+                basename=#{basename},
+            </if>
+            <if test="baselevel!=null and baselevel!=''">
+                baselevel=#{baselevel},
+            </if>
+            <if test="basebelong!=null and basebelong!=''">
+                basebelong=#{basebelong},
+            </if>
+        </set>
+        where baseid=#{baseid}
+    </update>
+
+    <insert id="insertBase" parameterType="Base">
+        INSERT INTO base(baseid,basename,baselevel,basebelong)
+        VALUES(#{baseid},#{basename},#{baselevel},#{basebelong})
+    </insert>
+
+    <select id="selectBaseById" resultType="Base" parameterType="Integer">
+        SELECT * FROM base WHERE baseid = #{baseid}
+    </select>
+
+    <select id="getAllBase" resultType="map">
+        SELECT * FROM base
+    </select>
+
+</mapper>

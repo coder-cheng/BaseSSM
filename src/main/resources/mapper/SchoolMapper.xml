@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为SchoolDao接口方法提供sql语句配置 -->
+<mapper namespace="com.edu.sys.dao.SchoolDao">
+
+    <delete id="deleteSchoolById" parameterType="int">
+        delete from school where schoolid=#{schoolid}
+    </delete>
+
+    <update id="updateSchoolById" parameterType="School">
+        update school
+        <set>
+            <if test="schoolid!=null and schoolid!=''">
+                schoolid=#{schoolid},
+            </if>
+            <if test="schoolname!=null and schoolname!=''">
+                schoolname=#{schoolname},
+            </if>
+            <if test="schoollevel!=null and schoollevel!=''">
+                schoollevel=#{schoollevel},
+            </if>
+            <if test="schoolbelong!=null and schoolbelong!=''">
+                schoolbelong=#{schoolbelong},
+            </if>
+        </set>
+        where schoolid=#{schoolid}
+    </update>
+
+    <insert id="insertSchool" parameterType="School">
+        INSERT INTO school(schoolid,schoolname,schoollevel,schoolbelong)
+        VALUES(#{schoolid},#{schoolname},#{schoollevel},#{schoolbelong})
+    </insert>
+
+    <select id="selectSchoolById" resultType="School" parameterType="Integer">
+        SELECT * FROM school WHERE schoolid = #{schoolid}
+    </select>
+
+    <select id="getAllSchool" resultType="map">
+        SELECT * FROM school
+    </select>
+
+</mapper>

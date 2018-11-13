@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为BaseDao接口方法提供sql语句配置 -->
+<mapper namespace="com.edu.sys.dao.ObjectsDao">
+
+    <delete id="deleteObjectById" parameterType="int">
+        delete from object where objectid=#{objectid}
+    </delete>
+
+    <update id="updateObjectById" parameterType="Objects">
+        update object
+        <set>
+            <if test="objectid!=null and objectid!=''">
+                objectid=#{objectid},
+            </if>
+            <if test="objectname!=null and objectname!=''">
+                objectname=#{objectname},
+            </if>
+            <if test="objectlevel!=null and objectlevel!=''">
+                objectlevel=#{objectlevel},
+            </if>
+            <if test="objectbelong!=null and objectbelong!=''">
+                objectbelong=#{objectbelong},
+            </if>
+        </set>
+        where objectid=#{objectid}
+    </update>
+
+    <insert id="insertObject" parameterType="Objects">
+        INSERT INTO object(objectid,objectname,objectlevel,objectbelong)
+        VALUES(#{objectid},#{objectname},#{objectlevel},#{objectbelong})
+    </insert>
+
+    <select id="selectObjectById" resultType="Objects" parameterType="Integer">
+        SELECT * FROM object WHERE objectid = #{objectid}
+    </select>
+
+    <select id="getAllObject" resultType="map">
+        SELECT * FROM object
+    </select>
+
+</mapper>

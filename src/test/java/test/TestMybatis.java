@@ -1,7 +1,13 @@
 package test;
 
+import com.edu.sys.dao.BaseDao;
 import com.edu.sys.dao.LocalDao;
+import com.edu.sys.dao.RoleDao;
+import com.edu.sys.dao.SchoolDao;
+import com.edu.sys.entity.Base;
 import com.edu.sys.entity.Local;
+import com.edu.sys.entity.Role;
+import com.edu.sys.entity.School;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: Mr.ch
@@ -21,48 +28,52 @@ public class TestMybatis {
 
     @Autowired
     private LocalDao localDao;
+    @Autowired
+    private BaseDao baseDao;
+    @Autowired
+    private SchoolDao schoolDao;
+    @Autowired
+    private RoleDao roleDao;
+
     @Test
     public void getone(){
         int id = 10000;
-        Local locallist = localDao.selectLocal(id);
+        Local locallist = localDao.selectLocalById(id);
         System.out.println(locallist);
     }
     @Test
     public void selectAll(){
-        List<Local> list = localDao.getAll();
+        List<Map<String, Object>> list = localDao.getAllLocal();
         System.out.println(list);
     }
     @Test
-    public void insertLocal(){
-        Local local = new Local();
-        local.setLocalid(11);
-        local.setLocalname("test");
-        local.setLocallevel("top");
-        local.setLocalbelong("own");
-        int rows = localDao.insertLocal(local);
+    public void insert(){
+        Role role = new Role();
+        role.setUsername("aaa");
+        role.setPassword("123");
+        role.setRole("test");
+        role.setRolelevel(1);
+        int rows = roleDao.insertRole(role);
         System.out.println(rows);
     }
     @Test
-    public void updateLocal(){
-        Local local = new Local();
-        local.setLocalid(11);
-        local.setLocalname("大哥");
-        local.setLocallevel("日他哥");
-        local.setLocalbelong("强无敌");
-        int rows = localDao.updateLocalById(local);
+    public void update(){
+        Role role = new Role();
+        role.setUsername("aaa");
+        role.setPassword("123");
+        role.setRole("test");
+        role.setRolelevel(2);
+        int rows = roleDao.updateRoleByName(role);
         System.out.println(rows);
     }
     @Test
-    public void deleteLocal(){
+    public void delete(){
         int id=11;
-        int rows = localDao.deleteLocalById(id);
+        int rows = schoolDao.deleteSchoolById(id);
         if (rows==1){
             System.out.println("删除成功！");
         }else {
             System.out.println("数据已经不存在。");
         }
     }
-    
-
-
 }

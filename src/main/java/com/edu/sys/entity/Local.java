@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * @Auther: Mr.ch
  * @Date: 2018-10-29 15:31
- * @Description:
+ * @Description: 这个类是区域信息的实体类
  */
 public class Local implements Serializable {
 

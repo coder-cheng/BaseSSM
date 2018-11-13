@@ -1282,7 +1282,7 @@ class UploadHandler
                 );
             }
         } else {
-            // param_name is a single object identifier like "file",
+            // param_name is a single objects identifier like "file",
             // $_FILES is a one-dimensional array:
             $files[] = $this->handle_file_upload(
                 isset($upload['tmp_name']) ? $upload['tmp_name'] : null,

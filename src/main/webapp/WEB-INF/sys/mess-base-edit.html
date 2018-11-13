@@ -11,26 +11,22 @@
                 <form class="form-vertical hover-stripped" role="form">
                     <div class="form-group">
                         <label class="control-label">基地编号</label>
-                        <input type="text" class="form-control" value="这是一个项目的编号">
+                        <input id="baseId" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label class="control-label">基地名称</label>
-                        <input type="text" class="form-control" value="这是一个项目的名称">
+                        <input id="baseName" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label class="control-label">基地级别</label>
-                        <input type="text" class="form-control" value="这是项目发生的地点,如:河北师范大学">
+                        <input id="baseLevel" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label class="control-label">基地所属</label>
-                        <input type="text" class="form-control" value="这是项目的时间,如2018.2~2018.8">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">其他</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <input id="baseBelong" type="text" class="form-control">
                     </div>
                     <!-- End .form-group  -->
-                    <div class="form-group mb15">
+                    <div id="footer-button" class="form-group mb15">
                         <button class="btn btn-primary">确认</button>
                         <button class="btn btn-warning">取消</button>
                     </div>
@@ -41,5 +37,75 @@
     </div>
     <!-- Page End here -->
 </div>
-<!-- End .content-wrapper -->
-<div class="clearfix"></div>
+<script src="/assets/js/jquery-1.11.3.js"></script>
+<script>
+    /*注册方法和事件*/
+    $(function () {
+        /*加载数据的方法*/
+        doLoadData();
+        /*取消和确定按钮的点击事件*/
+        $("#footer-button")
+            .on("click", ".btn-warning", doCancel)
+            .on("click", ".btn-primary", doSave)
+    })
+    /*加载数据的方法*/
+    function doLoadData() {
+        //从数据储存模块中获取存入data数据
+        var data = $("#load-windows").data("data");
+        //如果有数据，执行初始化表单方法
+        if (data) {
+            doInitForm(data);
+        }
+    }
+    /*初始化表单的方法*/
+    function doInitForm(data) {
+        $("#baseId").val(data.baseid);
+        $("#baseId").attr("disabled","true");
+        $("#baseName").val(data.basename);
+        $("#baseLevel").val(data.baselevel);
+        $("#baseBelong").val(data.basebelong);
+    }
+    /*确认按钮的执行方法*/
+    function doSave() {
+        var params = getFormData();
+        var data = $("#load-windows").data("data");
+        var changeUrl = "sys/updateBase.do";
+        var insertUrl = "sys/insertBase.do";
+        var url;
+        if (data) {
+            url = changeUrl
+        } else {
+            url = insertUrl
+        }
+        $.ajax({
+            type: "post",
+            url: url,
+            data: params,
+            dataType: "json",
+            success: function (result) {
+                alert("没进来？");
+                if (result.state == 1) {
+                    alert(result.message);
+                    doCancel();
+                } else {
+                    alert(result.message);
+                }
+            }
+        })
+    }
+    /*取消按钮的执行方法*/
+    function doCancel() {
+        $("#load-windows").load("sys/baseMess.do");
+        alert("取消");
+    }
+    /*初始化表单的方法*/
+    function getFormData() {
+        var params = {
+            baseid: $("#baseId").val(),
+            basename: $("#baseName").val(),
+            baselevel: $("#baseLevel").val(),
+            basebelong: $("#baseBelong").val()
+        };
+        return params;
+    }
+</script>

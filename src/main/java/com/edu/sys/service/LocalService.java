@@ -4,22 +4,23 @@ import com.edu.sys.entity.Local;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: Mr.ch
  * @Date: 2018-10-29 15:57
- * @Description:
+ * @Description: 这个类是服务层接口
  */
-public interface LocalService  {
+public interface LocalService {
 
-    int deleteLocalById(@Param("localid")Integer localid);
+    int deleteLocalById(@Param("localid") Integer localid);
 
-    int updateLocalById(@Param("localid")Integer localid, @Param("local")Local local);
+    int updateLocalById(Local local);
 
     int insertLocal(Local local);
 
-    Local selectLocal(Integer localid);
+    Local selectLocalById(Integer localid);
 
-    List<Local> getAll();
+    List<Map<String, Object>> getAllLocal();
 
 }

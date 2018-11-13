@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 设置为UserDao接口方法提供sql语句配置 -->
+<!-- 设置为LocalDao接口方法提供sql语句配置 -->
 <mapper namespace="com.edu.sys.dao.LocalDao">
 
     <delete id="deleteLocalById" parameterType="int">
         delete from local where localid=#{localid}
     </delete>
 
-    <update id="updateLocalById" parameterType="local">
+    <update id="updateLocalById" parameterType="Local">
         update local
         <set>
             <if test="localid!=null and localid!=''">
@@ -33,11 +33,11 @@
         VALUES(#{localid},#{localname},#{locallevel},#{localbelong})
     </insert>
 
-    <select id="selectLocal" resultType="Local" parameterType="Integer">
+    <select id="selectLocalById" resultType="Local" parameterType="Integer">
         SELECT * FROM local WHERE localid = #{localid}
     </select>
 
-    <select id="getAll" resultType="Local">
+    <select id="getAllLocal" resultType="map">
         SELECT * FROM local
     </select>
 
